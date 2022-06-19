@@ -1,8 +1,9 @@
-import { expect } from "chai";
-import { ethers } from "hardhat";
+import { Contract } from "ethers";
 
-const helper = async (victim: any, attacker: any) => {
-  // add code here that will help you pass the test
+const helper = async (attacker: Contract, winsTarget: number) => {
+  for (let i = 0; i < winsTarget; i++) {
+    await attacker.hackContract();
+  }
 };
 
 export default helper;
