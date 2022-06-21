@@ -14,7 +14,7 @@ describe("Attacking Reentrance", function () {
 
   // Get this to pass!
   it("Succesfully take all the ETH out of the contract", async () => {
-    await attacker.hackContract();
+    await attacker.hackContract({ gasLimit: 300000 });
     const provider = waffle.provider;
     const balance = await provider.getBalance(victim.address);
     expect(balance).to.equal(0);
